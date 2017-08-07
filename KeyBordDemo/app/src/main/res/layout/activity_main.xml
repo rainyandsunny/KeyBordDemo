@@ -6,13 +6,22 @@
     android:layout_height="match_parent"
     tools:context="com.yuntu.demo.keyborddemo.MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <EditText
+        android:hint="please edit here!"
+        android:id="@+id/input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <android.inputmethodservice.KeyboardView
+        android:id="@+id/keyboardview"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:focusable="false"
+        android:focusableInTouchMode="true"
+        android:background="#433C53"
+        android:keyTextColor="#fff"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:visibility="gone"
+        />
 
 </android.support.constraint.ConstraintLayout>

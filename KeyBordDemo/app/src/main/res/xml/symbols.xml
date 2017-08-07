@@ -1,10 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Keyboard
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:keyWidth="100%"
-    android:keyHeight="20%"
+    android:keyWidth="25%p"
+    android:keyHeight="60dp"
     android:horizontalGap="0px"
     android:verticalGap="0px"
     >
-    
+    <Row
+        android:rowEdgeFlags="top"
+        >
+        <Key android:codes="100" android:keyLabel="1"/>
+        <Key android:codes="101" android:keyLabel="2"/>
+        <Key android:codes="102" android:keyLabel="3"/>
+        <Key android:codes="103" android:keyLabel="x" android:keyEdgeFlags="right"/>
+    </Row>
+    <Row
+        >
+        <Key android:codes="104" android:keyLabel="4"/>
+        <Key android:codes="105" android:keyLabel="5"/>
+        <Key android:codes="106" android:keyLabel="6"/>
+        <Key android:codes="107" android:keyLabel="清空" android:keyEdgeFlags="right"/>
+    </Row>
+    <Row
+        >
+        <Key android:codes="108" android:keyLabel="7"/>
+        <Key android:codes="109" android:keyLabel="8"/>
+        <Key android:codes="110" android:keyLabel="9"/>
+        <Key android:codes="111" android:keyLabel="确定" android:keyEdgeFlags="right" android:keyHeight="120dp"/>
+    </Row>
+    <Row
+        >
+        <Key android:codes="112" android:keyLabel="0" android:keyWidth="50%p"/>
+        <Key android:codes="113" android:keyLabel="."/>
+    </Row>
 </Keyboard>

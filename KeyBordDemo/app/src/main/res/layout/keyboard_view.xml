@@ -13,7 +13,7 @@
         android:layout_alignParentBottom="true"
         android:keyBackground="@drawable/keyboard_background"
         android:focusableInTouchMode="true"
-        android:keyTextColor="#fff"
+        android:keyTextColor="@android:color/white"
         android:labelTextSize="@dimen/keyboard_fontsize"
         android:visibility="gone"
         android:background="@color/keyboardBackground"

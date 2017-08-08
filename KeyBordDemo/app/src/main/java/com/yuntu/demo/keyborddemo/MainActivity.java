@@ -37,20 +37,14 @@ public class MainActivity extends Activity implements View.OnTouchListener{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
 
+        setContentView(R.layout.activity_main);
         mInputText = findViewById(R.id.input);
         mInputText.setOnTouchListener(this);
-
         mMyKeyBoardView = findViewById(R.id.keyboardview);
 
-
-
     }
 
-    private void hideSystemKeyboard() {
-        mInputText.setInputType(InputType.TYPE_NULL);
-    }
 
     @Override
     public boolean onTouch(View view, MotionEvent motionEvent) {
@@ -69,7 +63,6 @@ public class MainActivity extends Activity implements View.OnTouchListener{
                     mKeyBoardUtil.setCurrentFocusEditText(mInputText);
                     mKeyBoardUtil.hideSystemKeyboard();
                     mKeyBoardUtil.displayKeyBoard();
-                    mInputText.setCursorVisible(true);
 
                 }break;
             }

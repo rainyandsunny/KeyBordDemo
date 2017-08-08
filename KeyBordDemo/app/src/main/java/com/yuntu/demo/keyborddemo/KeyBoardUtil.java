@@ -31,6 +31,8 @@ public class KeyBoardUtil implements KeyboardView.OnKeyboardActionListener{
     //------------------------静态成员变量---------------------------
 
 
+
+
     //------------------------构造方法区------------------------------
 
     public KeyBoardUtil(KeyboardView keyboardView){
@@ -147,7 +149,7 @@ public class KeyBoardUtil implements KeyboardView.OnKeyboardActionListener{
 
     public void hideSystemKeyboard() {
         if(null == mCurrentFoucusEditText){
-            throw new RuntimeException("method setCurrentFocusEditText must be called before hideSystemKeyboard()");
+            throw new RuntimeException("this method must be called before hideSystemKeyboard()");
         }
 
         int sdkInt = Build.VERSION.SDK_INT;
@@ -169,12 +171,11 @@ public class KeyBoardUtil implements KeyboardView.OnKeyboardActionListener{
         } else {
             mCurrentFoucusEditText.setInputType(InputType.TYPE_NULL);
         }
-        // 如果软键盘已经显示，则隐藏
-        InputMethodManager imm = (InputMethodManager) mContext.getSystemService(Context.INPUT_METHOD_SERVICE);
-        imm.hideSoftInputFromWindow(mCurrentFoucusEditText.getWindowToken(), 0);
+        InputMethodManager inputMethodManager = (InputMethodManager) mContext.getSystemService(Context.INPUT_METHOD_SERVICE);
+        inputMethodManager.hideSoftInputFromWindow(mCurrentFoucusEditText.getWindowToken(), 0);
     }
 
-    private void unAttachKeyboardToKeyboardView(){
+    public void unAttachKeyboardToKeyboardView(){
 
         mNumberKeyborad = null;
         if(null != mKeyBoardView){

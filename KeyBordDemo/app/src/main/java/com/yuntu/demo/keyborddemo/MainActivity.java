@@ -1,6 +1,8 @@
 package com.yuntu.demo.keyborddemo;
 
 import android.app.Activity;
+import android.graphics.Color;
+import android.graphics.ColorSpace;
 import android.inputmethodservice.Keyboard;
 import android.inputmethodservice.KeyboardView;
 import android.os.Bundle;
@@ -47,6 +49,7 @@ public class MainActivity extends Activity implements View.OnTouchListener,Keybo
         mKeyboardView.setKeyboard(mNumberKeyBorad);
         mKeyboardView.setPreviewEnabled(false);
         mKeyboardView.setOnKeyboardActionListener(this);
+        mKeyboardView.setBackgroundColor(Color.rgb(70,66,80));
 
     }
 
@@ -60,7 +63,6 @@ public class MainActivity extends Activity implements View.OnTouchListener,Keybo
 
                 case R.id.input:{
 
-                    //TODO show customer keybord
                     displayKeyboard();
 
                 }break;
@@ -80,6 +82,9 @@ public class MainActivity extends Activity implements View.OnTouchListener,Keybo
     public void onRelease(int i) {
 
         Log.d(TAG,"onRelease: " + i);
+        if(i == 111){
+            hideKeyboard();
+        }
 
     }
 

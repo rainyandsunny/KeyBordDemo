@@ -3,8 +3,8 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:keyWidth="25%p"
     android:keyHeight="60dp"
-    android:horizontalGap="0px"
-    android:verticalGap="0px"
+    android:horizontalGap="1sp"
+    android:verticalGap="1dp"
     >
     <Row
         android:rowEdgeFlags="top"
@@ -26,7 +26,8 @@
         <Key android:codes="108" android:keyLabel="7"/>
         <Key android:codes="109" android:keyLabel="8"/>
         <Key android:codes="110" android:keyLabel="9"/>
-        <Key android:codes="111" android:keyLabel="确定" android:keyEdgeFlags="right" android:keyHeight="120dp"/>
+        <Key android:codes="111" android:keyLabel="确定" android:keyEdgeFlags="right" android:keyHeight="120dp"
+            android:horizontalGap="0px" android:verticalGap="0px" android:background="#FF5A4E"/>
     </Row>
     <Row
         >

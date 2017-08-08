@@ -3,6 +3,13 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
-    <color name="keyboardPressed">#433C53</color>
+
+
+    <color name="keyboardPressed">#373145</color>
     <color name="keyboardReleased">#433C53</color>
+
+    <color name="keyboard_confirm_pressed_background">#BC8F8F</color>
+    <color name="keyboard_confirm_released_background">#FF5A4E</color>
+
+    <color name="keyboardBackground">#464250</color>
 </resources>

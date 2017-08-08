@@ -1,17 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="wrap_content">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:MyKeyBoardView="http://schemas.android.com/tools">
 
-    <android.inputmethodservice.KeyboardView
+    <com.yuntu.demo.keyborddemo.MyKeyBoardView
         android:id="@+id/keyboardview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:focusable="false"
         android:layout_alignParentBottom="true"
-        android:keyBackground="@color/keyboardPressed"
+        android:keyBackground="@drawable/keyboard_background"
         android:focusableInTouchMode="true"
         android:keyTextColor="#fff"
+        android:labelTextSize="@dimen/keyboard_fontsize"
         android:visibility="gone"
+        android:background="@color/keyboardBackground"
+        app:confirm_btn_fontcolor="#fff"
+        app:confirm_btn_fontsize="@dimen/keyboard_fontsize"
         />
 
 </RelativeLayout>

@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">KeyBordDemo</string>
+
+    <string name="keyboard_deleteall">清空</string>
+    <string name="keyboard_confirm">确认</string>
 </resources>

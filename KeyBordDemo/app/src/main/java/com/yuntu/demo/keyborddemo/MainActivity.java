@@ -12,14 +12,14 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.EditText;
 
-public class MainActivity extends Activity implements View.OnTouchListener,KeyboardView.OnKeyboardActionListener {
+public class MainActivity extends Activity implements View.OnTouchListener{
 
 
     //--------------普通成员变量---------------
 
     private EditText mInputText;
-    private KeyboardView mKeyboardView;
-    private Keyboard mNumberKeyBorad;
+    private KeyBoardUtil mKeyBoardUtil;
+    private MyKeyBoardView mMyKeyBoardView;
 
 
     //--------------静态成员变量---------------
@@ -41,16 +41,15 @@ public class MainActivity extends Activity implements View.OnTouchListener,Keybo
 
         mInputText = findViewById(R.id.input);
         mInputText.setOnTouchListener(this);
+
+        mMyKeyBoardView = findViewById(R.id.keyboardview);
+
+
+
+    }
+
+    private void hideSystemKeyboard() {
         mInputText.setInputType(InputType.TYPE_NULL);
-
-        mNumberKeyBorad = new Keyboard(getApplicationContext(),R.xml.symbols);
-        mKeyboardView = findViewById(R.id.keyboardview);
-
-        mKeyboardView.setKeyboard(mNumberKeyBorad);
-        mKeyboardView.setPreviewEnabled(false);
-        mKeyboardView.setOnKeyboardActionListener(this);
-        mKeyboardView.setBackgroundColor(Color.rgb(70,66,80));
-
     }
 
     @Override
@@ -63,7 +62,11 @@ public class MainActivity extends Activity implements View.OnTouchListener,Keybo
 
                 case R.id.input:{
 
-                    displayKeyboard();
+                    mKeyBoardUtil = new KeyBoardUtil(mMyKeyBoardView);
+                    mKeyBoardUtil.attachKeyboardToKeyboardView(getApplicationContext());
+                    mKeyBoardUtil.setCurrentFocusEditText(mInputText);
+                    mKeyBoardUtil.hideSystemKeyboard();
+                    mKeyBoardUtil.displayKeyBoard();
 
                 }break;
             }
@@ -72,70 +75,10 @@ public class MainActivity extends Activity implements View.OnTouchListener,Keybo
     }
 
 
-    @Override
-    public void onPress(int i) {
-
-        Log.d(TAG,"onPress: " + i);
-    }
-
-    @Override
-    public void onRelease(int i) {
-
-        Log.d(TAG,"onRelease: " + i);
-        if(i == 111){
-            hideKeyboard();
-        }
-
-    }
-
-    @Override
-    public void onKey(int i, int[] ints) {
-        Log.d(TAG,"onRelease: " + i);
-    }
-
-    @Override
-    public void onText(CharSequence charSequence) {
-        Log.d(TAG,"onRelease: " + charSequence);
-    }
-
-    @Override
-    public void swipeLeft() {
-
-    }
-
-    @Override
-    public void swipeRight() {
-
-    }
-
-    @Override
-    public void swipeDown() {
-
-    }
-
-    @Override
-    public void swipeUp() {
-
-    }
-
 
     //---------------普通方法区----------------
 
-    public void hideKeyboard(){
 
-        int keyboardVisiableStatus = mKeyboardView.getVisibility();
-        if(View.VISIBLE == keyboardVisiableStatus){
-            mKeyboardView.setVisibility(View.GONE);
-        }
-    }
-
-    public void displayKeyboard(){
-
-        int keyboardVisiableStatus = mKeyboardView.getVisibility();
-        if(View.GONE == keyboardVisiableStatus){
-            mKeyboardView.setVisibility(View.VISIBLE);
-        }
-    }
 
     //-----------------内部类------------------
 

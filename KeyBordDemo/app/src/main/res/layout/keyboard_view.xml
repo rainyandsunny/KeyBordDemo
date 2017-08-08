@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="wrap_content">
+
+    <android.inputmethodservice.KeyboardView
+        android:id="@+id/keyboardview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:focusable="false"
+        android:layout_alignParentBottom="true"
+        android:keyBackground="@color/keyboardPressed"
+        android:focusableInTouchMode="true"
+        android:keyTextColor="#fff"
+        android:visibility="gone"
+        />
+
+</RelativeLayout>

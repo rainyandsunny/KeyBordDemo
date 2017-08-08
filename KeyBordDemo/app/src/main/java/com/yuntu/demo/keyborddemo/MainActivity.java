@@ -62,11 +62,14 @@ public class MainActivity extends Activity implements View.OnTouchListener{
 
                 case R.id.input:{
 
-                    mKeyBoardUtil = new KeyBoardUtil(mMyKeyBoardView);
-                    mKeyBoardUtil.attachKeyboardToKeyboardView(getApplicationContext());
+                    if(null == mKeyBoardUtil){
+                        mKeyBoardUtil = new KeyBoardUtil(mMyKeyBoardView);
+                        mKeyBoardUtil.attachKeyboardToKeyboardView(getApplicationContext());
+                    }
                     mKeyBoardUtil.setCurrentFocusEditText(mInputText);
                     mKeyBoardUtil.hideSystemKeyboard();
                     mKeyBoardUtil.displayKeyBoard();
+                    mInputText.setCursorVisible(true);
 
                 }break;
             }

@@ -3,11 +3,15 @@ package com.yuntu.demo.keyborddemo;
 import android.content.Context;
 import android.inputmethodservice.Keyboard;
 import android.inputmethodservice.KeyboardView;
+import android.os.Build;
 import android.text.Editable;
 import android.text.InputType;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import java.lang.reflect.Method;
 
 /**
  * Created by yanghaipeng on 2017/8/8.
@@ -22,7 +26,7 @@ public class KeyBoardUtil implements KeyboardView.OnKeyboardActionListener{
     private EditText mCurrentFoucusEditText;
     private Editable mEditable;
     private int mStart;
-
+    private Context mContext;
 
     //------------------------静态成员变量---------------------------
 
@@ -112,6 +116,7 @@ public class KeyBoardUtil implements KeyboardView.OnKeyboardActionListener{
 
     public void attachKeyboardToKeyboardView(Context context){
 
+        mContext = context;
         mNumberKeyborad = new Keyboard(context,R.xml.symbols);
         if(null != mKeyBoardView){
             mKeyBoardView.setKeyboard(mNumberKeyborad);
@@ -144,7 +149,29 @@ public class KeyBoardUtil implements KeyboardView.OnKeyboardActionListener{
         if(null == mCurrentFoucusEditText){
             throw new RuntimeException("method setCurrentFocusEditText must be called before hideSystemKeyboard()");
         }
-        mCurrentFoucusEditText.setInputType(InputType.TYPE_NULL);
+
+        int sdkInt = Build.VERSION.SDK_INT;
+        if (sdkInt >= Build.VERSION_CODES.HONEYCOMB) {
+            try {
+                Class<EditText> cls = EditText.class;
+                Method setShowSoftInputOnFocus;
+                setShowSoftInputOnFocus = cls.getMethod("setShowSoftInputOnFocus", boolean.class);
+                setShowSoftInputOnFocus.setAccessible(true);
+                setShowSoftInputOnFocus.invoke(mCurrentFoucusEditText, false);
+
+            } catch (SecurityException e) {
+                e.printStackTrace();
+            } catch (NoSuchMethodException e) {
+                e.printStackTrace();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        } else {
+            mCurrentFoucusEditText.setInputType(InputType.TYPE_NULL);
+        }
+        // 如果软键盘已经显示，则隐藏
+        InputMethodManager imm = (InputMethodManager) mContext.getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(mCurrentFoucusEditText.getWindowToken(), 0);
     }
 
     private void unAttachKeyboardToKeyboardView(){
